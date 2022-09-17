@@ -2,7 +2,6 @@ import picar_4wd as fc
 import numpy as np
 
 
-
 import picar_4wd as fc
 speed = 10
 us_step = 5
@@ -41,7 +40,7 @@ def get_distance_at(angle):
     
 def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
 
-    fc_stop
+    fc.stop()
     
     scan_angle_max = min([scan_angle_max,90])
     scan_angle_min = max([scan_angle_min,-90])
