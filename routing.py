@@ -49,7 +49,7 @@ def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
     
     for ang in range(scan_angle_min,scan_angle_max, scan_step):
         
-        cdt = get_distance_at(current_angle)# get distance
+        cdt = get_distance_at(ang)# get distance
         xy = [cdt*np.cos(ang),cdt*np.sin(ang)] # convert to grid
         dist_list.append(xy)
     
