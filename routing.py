@@ -28,15 +28,15 @@ if __name__ == "__main__":
         fc.stop()
         
         
-        
+'''       
 def get_distance_at(angle):
     global angle_distance
-    servo.set_angle(angle)
+    fc.servo.set_angle(angle)
     time.sleep(0.04)
     distance = us.get_distance()
     angle_distance = [angle, distance]
     return distance
-    
+'''   
     
 def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
 
@@ -49,7 +49,7 @@ def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
     
     for ang in range(scan_angle_min,scan_angle_max, scan_step):
         
-        cdt = get_distance_at(ang)# get distance
+        cdt = fc.get_distance_at(ang)# get distance
         xy = [cdt*np.cos(ang),cdt*np.sin(ang)] # convert to grid
         dist_list.append(xy)
     
