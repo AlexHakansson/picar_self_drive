@@ -39,7 +39,7 @@ def get_distance_at(angle):
     return distance
     
     
-def scan_step_dist(scan_angle_max = 90,scan_angle_max = -90,scan_step =5):
+def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
 
     fc_stop
     
