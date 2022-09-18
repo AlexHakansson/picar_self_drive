@@ -26,7 +26,7 @@ def main():
     global cur_pos
     
     
-    rmap = np.zeros(500,500)
+    rmap = np.zeros([500,500])
     
     if len(sys.argv) ==3:
         end_point = [sys.argv[1],sys.argv[2]]
