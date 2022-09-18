@@ -22,7 +22,7 @@ def main():
     
     if len(sys.argv) ==3:
         end_point = [sys.argv[1],sys.argv[2]]
-    else end_point = [300,150]
+    else: end_point = [300,150]
     
     rmap = map_space(rmap,cur_pos,cur_dir)
     
@@ -50,7 +50,7 @@ def main():
             if 0 in tmp or step_count>20:
             
                 if 0 in tmp:
-                    move back()
+                    move_back()
                 
                 rmap = map_space(rmap,cur_pos,cur_dir)
                 pdict,aend = A_star(cur_pos,end_point,rmap)
@@ -66,8 +66,16 @@ def main():
             bt.pop(0)
             
 def test_step(np_l):
-    for np in np_l
-  
+    sc =0
+    for np in np_l:
+        sc = sc+1
+        print(sc)
+        st = time.time()
+        scan_list = fc.scan_step(20)
+        move_step(np)
+        print(time.time()-st)
+        
+        
 def ct_left():
     fc.turn_right(speed)
     time.sleep(2)
@@ -320,7 +328,7 @@ def A_star(start, end, rmap, debug=False,trace = False):
         return(rmap_copy)
         
         
- if __name__ == "__main__":
+if __name__ == "__main__":
     try:
         main()
     finally:
