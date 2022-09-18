@@ -302,6 +302,7 @@ def backtrack(prev_dict,end_n):
     
 def A_star(start, end, rmap, debug=False,trace = False):
     
+    start = list(start)
     cur_node = start + [0,man_dist(start,end)]
     
     if trace: rmap_copy = rmap.copy()
