@@ -69,6 +69,10 @@ def main():
             
             print("time")
             print(time.time()-st)
+            
+            print(bt[0])
+            print(cur_pos)
+            
             step_count = step_count+1
             move_step(bt[0])
             cur_pos=bt[0]
@@ -119,7 +123,7 @@ def move_back():
 
     step_time = .5/15
     
-    fc.back(speed)
+    fc.backward(speed)
     time.delay(step_time*5)
     
     fc.stop()
@@ -180,7 +184,7 @@ def move_step(np,debug=False):
         ct_left()
         fc.forward(speed)
     if next_order == 2:
-        fc.back(speed)        
+        fc.backward(speed)        
         
         
 '''       
