@@ -1,31 +1,139 @@
 import picar_4wd as fc
 import numpy as np
+import sys
+import time
 
 
 import picar_4wd as fc
-speed = 10
+global speed = 10
 us_step = 5
 scan_angle_max = 90
 scan_angle_max = -90
 
+global cur_dir = "forward"
+global cur_pos = [20,200]
+global cur_dir_int = 0
+
+global dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
+
 def main():
-    while True:
-        scan_list = fc.scan_step(35)
-        if not scan_list:
-            continue
+
+    rmap = np.zeros(500,500)
+    
+    if len(sys.argv) ==3:
+        end_point = [sys.argv[1],sys.argv[2]]
+    else end_point = [300,150]
+    
+    rmap = map_space(rmap,cur_pos,cur_dir)
+    
+    pdict,aend = A_star(cur_pos,end_point,rmap)
+    
+    bt = backtrack(pdict,aend)
+    
+    step_count =0
+    
+    prev_t = time.tim()
+    
+    while len(bt)>0:
+    
+    
+        st = time.time()
+        scan_list = fc.scan_step(20)
+        #if not scan_list:
+         #   continue
         tmp = scan_list[3:7]
         print(tmp)
-        if tmp != [2,2,2,2]:
-            fc.turn_right(speed)
+        
+        # re calculate map if within 10cm or 20cm and haven't looked in 20 steps
+        if 1 in tmp or 0 in tmp:
+            
+            if 0 in tmp or step_count>20:
+            
+                if 0 in tmp:
+                    move back()
+                
+                rmap = map_space(rmap,cur_pos,cur_dir)
+                pdict,aend = A_star(cur_pos,end_point,rmap)
+                bt = backtrack(pdict,aend)
+                step_count = 0
+        
         else:
-            fc.forward(speed)
+            
+            print("time")
+            print(time.time()-st)
+            step_count = step_count+1
+            move_step(bt[0])
+            bt.pop(0)
+            
+            
+  
+def ct_left():
+    fc.turn_right(speed)
+    time.sleep(2)
+    cur_dir_int = (cur_dir_int-1)%4
+    cur_dir = dir_dict[cur_dir_int]
+    fc.forward(speed)
     
+def ct_right():
+    fc.turn_left(speed)
+    time.sleep(2)
+    cur_dir_int = (cur_dir_int+1)%4
+    cur_dir = dir_dict[cur_dir_int]
+    fc.forward(speed)
     
-if __name__ == "__main__":
-    try:
-        main()
-    finally:
-        fc.stop()
+def move_back():
+    step_time = .5/15
+    
+    fc.back(speed)
+    time.delay(step_time*5)
+    
+    fc.stop()
+    
+    set_pos(5,(cur_dir_int+2)%4)
+
+def set_pos(ns,nd):
+
+    ns = int(ns)
+
+    if nd == 0:
+        ns = [0,ns]
+    elif nd == 1:
+        ns = [ns,0]
+    elif nd == 2:
+        ns = [0,-ns]
+    elif nd == 3:
+        ns = [-ns,0]
+        
+    cur_pos = [cur_pos[0]+ns[0],cur_pos[1] + ns[1]]
+    
+def move_step(np):
+
+    next_move = [np[0]-cur_pos[0],np[1]-cur_pos[1]]
+    
+    if next_move[1]>0:
+        next_move_dir = 0
+    elif next_move[0]>0:
+        next_move_dir = 1
+        
+    elif next_move[0]<0:
+        next_move_dir = 3
+        
+    elif next_move[1]<0:
+        next_move_dir = 2
+        
+    
+    next_order = (next_move_dir-cur_dir_int)%4
+    
+    if next_order == 0:
+        fc.forward(speed)
+    if next_order == 1:
+        ct_right()
+        fc.forward(speed)
+    if next_order == 3:
+        ct_left()
+        fc.forward(speed)
+    if next_order == 2:
+        fc.back(speed)        
         
         
 '''       
@@ -56,9 +164,73 @@ def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
     return (dist_list)
 
     
+def point_transform(point,dirc,cur_p):
+
+    if dirc=="forward":
+        return(point)
+    elif dirc=="right":
+        new_point = [point[1],-point[0]]
+        return new_point
+    elif dirc=="back":
+        new_point = [-point[0],-point[1]]
+        return new_point
+    elif dirc=="left":
+        new_point = [-point[1],point[0]]
+        return new_point
     
-#def map_space():
-   # dl = scan_step_dist
+    
+def map_space(rmap, cur_p,dirc="forward" ):
+    fc.stop()
+    dl = scan_step_dist()
+    
+    prev = [1000,1000]
+    for p in d1:
+        #skip if blank space
+        if p != [1000,1000]:
+            prev = p
+            continue
+            
+        # transform point based on current dirction
+        else:
+            p = point_transform(p,dirc)
+            p = [p[0] + cur_p[0],p[1]+cur_p[1]]
+            
+            #give 10 point boudry
+            
+            minx = max(0,int(p[0]-10))
+            maxx = min(rmap.shape[0]-1,int(p[0]+10))
+            miny= max(0,int(p[1]-10))
+            maxy = min(rmap.shape[1]-1,int(p[1]+10))
+            
+            rmap[minx:maxx,miny:maxy] = 1
+            
+            # draw boundry between the prev points
+            if prev != [1000,1000]:
+              
+            
+                # get all points in between 2 lines
+                
+                slope = (p[1]-prev[1])/(p[0]-prev[0])
+                
+                intc = p[1]-(slope*p[0])
+
+
+                # make line between point and add 10
+                stx = int(max(0,min(p[0],prev[0])-10))
+                enx = int(min(rmap.shape[0],max(p[0],prev[0])+10))
+                for pi in range(stx,enx):
+                    piy= int(pix*slope+intc)
+                    piymax = int(min(piy+10,rmap.shape[1]))
+                    piminy = int(max(piy-10,0))
+                    rmap[pi,piminy:pimaxy]=1
+                
+                prev = p
+    return rmap
+            
+            
+        
+        
+        
 
 
 def man_dist (p1,p2):
@@ -145,3 +317,10 @@ def A_star(start, end, rmap, debug=False,trace = False):
             if  0<=c[0] < rmap.shape[0] and 0<=c[1] < rmap.shape[1]:
                 rmap_copy[c[0],c[1]] =4
         return(rmap_copy)
+        
+        
+ if __name__ == "__main__":
+    try:
+        main()
+    finally:
+        fc.stop()
