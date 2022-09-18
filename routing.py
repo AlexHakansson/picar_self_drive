@@ -3,19 +3,14 @@ import numpy as np
 import sys
 import time
 import picar_4wd as fc
-global speed = 10
+
 us_step = 5
 scan_angle_max = 90
 scan_angle_max = -90
 
-global cur_dir = "forward"
-global cur_pos = [20,200]
-global cur_dir_int = 0
-
-global dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 
 def main():
-
+    global speed = 10
     global cur_dir = "forward"
     global cur_pos = [20,200]
     global cur_dir_int = 0
