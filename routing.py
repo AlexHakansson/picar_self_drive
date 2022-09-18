@@ -47,7 +47,7 @@ def main():
         st = time.time()
         scan_list = fc.scan_step(20)
         if not scan_list:
-            tmp = [2 for x in rang(4)]
+            tmp = [2 for x in range(4)]
         else:
             tmp = scan_list[3:7]
         print(tmp)
