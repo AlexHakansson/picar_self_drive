@@ -72,6 +72,7 @@ def main():
             
             print(bt[0])
             print(cur_pos)
+            print(cur_dir)
             
             step_count = step_count+1
             move_step(bt[0], debug)
@@ -124,7 +125,7 @@ def move_back():
     step_time = .5/15
     
     fc.backward(speed)
-    time.delay(step_time*5)
+    time.sleep(step_time*5)
     
     fc.stop()
     
