@@ -101,7 +101,7 @@ def ct_left():
     global speed
     
     fc.turn_right(speed)
-    time.sleep(2)
+    time.sleep(1.1)
     cur_dir_int = (cur_dir_int-1)%4
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
