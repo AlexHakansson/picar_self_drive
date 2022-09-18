@@ -164,6 +164,10 @@ def move_step(np,debug=False):
     elif next_move[1]<0:
         next_move_dir = 2
         
+    elif next_move[0]==0 and next_move[1]==0:
+        print("no move needed")
+        return 0
+        
     
     next_order = (next_move_dir-cur_dir_int)%4
     
