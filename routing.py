@@ -223,9 +223,9 @@ def point_transform(point,dirc,cur_p):
         return new_point
     
     
-def map_space(rmap, cur_p,dirc="forward" ):
+def map_space(rmap, cur_p,dirc="forward",debug=False):
     fc.stop()
-    dl = scan_step_dist()
+    d1 = scan_step_dist()
     
     prev = [1000,1000]
     for p in d1:
