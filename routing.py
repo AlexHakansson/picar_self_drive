@@ -81,7 +81,7 @@ def test_step(np_l):
         st = time.time()
         scan_list = fc.scan_step(20)
         move_step(np, debug=True)
-        cur_pos=np
+        global cur_pos=np
         print(time.time()-st)
     fc.stop()
         
