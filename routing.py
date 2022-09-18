@@ -74,6 +74,7 @@ def test_step(np_l):
         scan_list = fc.scan_step(20)
         move_step(np)
         print(time.time()-st)
+    fc.stop()
         
         
 def ct_left():
