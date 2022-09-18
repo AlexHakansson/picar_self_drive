@@ -8,14 +8,15 @@ us_step = 5
 scan_angle_max = 90
 scan_angle_max = -90
 
+speed = 10
+cur_dir = "forward"
+cur_pos = [20,200]
+cur_dir_int = 0
+dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
+
+
 
 def main():
-    global speed = 10
-    global cur_dir = "forward"
-    global cur_pos = [20,200]
-    global cur_dir_int = 0
-    global dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
-
 
     rmap = np.zeros(500,500)
     
