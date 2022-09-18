@@ -46,9 +46,10 @@ def main():
     
         st = time.time()
         scan_list = fc.scan_step(20)
-        #if not scan_list:
-         #   continue
-        tmp = scan_list[3:7]
+        if not scan_list:
+            tmp = [2 for x in rang(4)]
+        else:
+            tmp = scan_list[3:7]
         print(tmp)
         
         # re calculate map if within 10cm or 20cm and haven't looked in 20 steps
