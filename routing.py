@@ -2,8 +2,6 @@ import picar_4wd as fc
 import numpy as np
 import sys
 import time
-
-
 import picar_4wd as fc
 global speed = 10
 us_step = 5
@@ -17,6 +15,12 @@ global cur_dir_int = 0
 global dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 
 def main():
+
+    global cur_dir = "forward"
+    global cur_pos = [20,200]
+    global cur_dir_int = 0
+    global dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
+
 
     rmap = np.zeros(500,500)
     
@@ -65,7 +69,8 @@ def main():
             move_step(bt[0])
             bt.pop(0)
             
-            
+def test_step(np_l):
+    for np in np_l
   
 def ct_left():
     fc.turn_right(speed)
