@@ -23,7 +23,9 @@ for i in range(1,31):
     test_step2.append([cur_pos[0]+i,cur_pos[1]+31])
 
 def main():
-
+    global cur_pos
+    
+    
     rmap = np.zeros(500,500)
     
     if len(sys.argv) ==3:
@@ -88,6 +90,11 @@ def test_step(np_l):
         
         
 def ct_left():
+    global cur_dir_int
+    global cur_dir
+    global dir_dict
+    global speed
+    
     fc.turn_right(speed)
     time.sleep(2)
     cur_dir_int = (cur_dir_int-1)%4
@@ -95,6 +102,11 @@ def ct_left():
     fc.forward(speed)
     
 def ct_right():
+    global cur_dir_int
+    global cur_dir
+    global dir_dict
+    global speed
+
     fc.turn_left(speed)
     time.sleep(2)
     cur_dir_int = (cur_dir_int+1)%4
@@ -102,6 +114,9 @@ def ct_right():
     fc.forward(speed)
     
 def move_back():
+    global cur_dir_int
+    global speed
+
     step_time = .5/15
     
     fc.back(speed)
@@ -112,6 +127,8 @@ def move_back():
     set_pos(5,(cur_dir_int+2)%4)
 
 def set_pos(ns,nd):
+
+    global cur_pos
 
     ns = int(ns)
 
@@ -127,6 +144,10 @@ def set_pos(ns,nd):
     cur_pos = [cur_pos[0]+ns[0],cur_pos[1] + ns[1]]
     
 def move_step(np,debug=False):
+
+    global cur_pos
+    global cur_dir_int
+    global speed
 
     next_move = [np[0]-cur_pos[0],np[1]-cur_pos[1]]
     
@@ -169,6 +190,7 @@ def get_distance_at(angle):
 '''   
     
 def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
+
 
     fc.stop()
     
@@ -250,9 +272,7 @@ def map_space(rmap, cur_p,dirc="forward" ):
     return rmap
             
             
-        
-        
-        
+             
 
 
 def man_dist (p1,p2):
