@@ -25,7 +25,7 @@ for i in range(1,31):
 def main():
     global cur_pos
     
-    
+    debug = True
     rmap = np.zeros([500,500])
     
     if len(sys.argv) ==3:
@@ -74,7 +74,7 @@ def main():
             print(cur_pos)
             
             step_count = step_count+1
-            move_step(bt[0])
+            move_step(bt[0], debug)
             cur_pos=bt[0]
             bt.pop(0)
             
