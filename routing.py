@@ -14,7 +14,13 @@ cur_pos = [20,200]
 cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 
+test_step1 = []
+for i in range(1,31):
+    test_step1.append([cur_pos[0],cur_pos[1]+i])
 
+test_step2 = test_step1
+for i in range(1,31):
+    test_step2.append([cur_pos[0]+i,cur_pos[1]+31])
 
 def main():
 
@@ -63,6 +69,7 @@ def main():
             print(time.time()-st)
             step_count = step_count+1
             move_step(bt[0])
+            cur_pos=bt[0]
             bt.pop(0)
             
 def test_step(np_l):
@@ -73,6 +80,7 @@ def test_step(np_l):
         st = time.time()
         scan_list = fc.scan_step(20)
         move_step(np)
+        cur_pos=np
         print(time.time()-st)
     fc.stop()
         
