@@ -10,7 +10,7 @@ scan_angle_max = -90
 
 speed = 10
 cur_dir = "forward"
-cur_pos = [20,200]
+cur_pos = [200,20]
 cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 
@@ -30,7 +30,7 @@ def main():
     
     if len(sys.argv) ==3:
         end_point = [sys.argv[1],sys.argv[2]]
-    else: end_point = [100,300]
+    else: end_point = [300,100]
     
     rmap = map_space(rmap,cur_pos,cur_dir)
     
@@ -184,6 +184,7 @@ def move_step(np,debug=False):
     if next_order == 3:
         ct_left()
         fc.forward(speed)
+        
     if next_order == 2:
         fc.backward(speed)        
         
