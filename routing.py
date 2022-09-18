@@ -18,7 +18,7 @@ test_step1 = []
 for i in range(1,31):
     test_step1.append([cur_pos[0],cur_pos[1]+i])
 
-test_step2 = test_step1
+test_step2 = test_step1.copy()
 for i in range(1,31):
     test_step2.append([cur_pos[0]+i,cur_pos[1]+31])
 
@@ -77,6 +77,7 @@ def test_step(np_l):
     for np in np_l:
         sc = sc+1
         print(sc)
+        print(np)
         st = time.time()
         scan_list = fc.scan_step(20)
         move_step(np)
