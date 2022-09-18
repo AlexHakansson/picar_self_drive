@@ -77,7 +77,7 @@ def test_step(np_l):
     for np in np_l:
         sc = sc+1
         print(sc)
-        print(np)
+        print(np)qui
         st = time.time()
         scan_list = fc.scan_step(20)
         move_step(np)
@@ -125,9 +125,11 @@ def set_pos(ns,nd):
         
     cur_pos = [cur_pos[0]+ns[0],cur_pos[1] + ns[1]]
     
-def move_step(np):
+def move_step(np,debug=False):
 
     next_move = [np[0]-cur_pos[0],np[1]-cur_pos[1]]
+    
+    if debug: print(next_move)
     
     if next_move[1]>0:
         next_move_dir = 0
