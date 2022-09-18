@@ -80,7 +80,7 @@ def test_step(np_l):
         print(np)qui
         st = time.time()
         scan_list = fc.scan_step(20)
-        move_step(np)
+        move_step(np, debug=False)
         cur_pos=np
         print(time.time()-st)
     fc.stop()
