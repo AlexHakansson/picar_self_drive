@@ -40,7 +40,6 @@ def main():
     
     step_count =0
     
-    prev_t = time.tim()
     
     while len(bt)>0:
     
