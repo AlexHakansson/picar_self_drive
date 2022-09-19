@@ -12,14 +12,14 @@ speed = 1
 
 turn_speed =10
 ex_sp = 2
-point_scale = 5
+point_scale =10
 cur_dir = "forward"
 cur_pos = [50,10]
 cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 big_map=np.zeros([200,200])
 
-end_point = [55,15]
+end_point = [60,20]
 
 test_step1 = []
 for i in range(1,31):
@@ -65,11 +65,11 @@ def main():
     
     
         st = time.time()
-        scan_list = fc.scan_step(20)
+        scan_list = fc.scan_step(30)
         scansteps = 0
         print("scan_step")
         while not scan_list:
-            scan_list = fc.scan_step(20)
+            scan_list = fc.scan_step(30)
             scansteps = scansteps +1
         
         print(scansteps)
@@ -80,7 +80,7 @@ def main():
         # re calculate map if within 10cm or 20cm and haven't looked in 20 steps
         if 1 in tmp or 0 in tmp:
             
-            if 0 in tmp or step_count>20:
+            if 0 in tmp or step_count>5:
             
                 if 0 in tmp:
                     move_back()
@@ -160,7 +160,7 @@ def move_back():
     
     fc.stop()
     
-    set_pos(5,(cur_dir_int+2)%4)
+    set_pos(1,(cur_dir_int+2)%4)
 
 def set_pos(ns,nd):
 
