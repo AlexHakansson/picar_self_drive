@@ -11,7 +11,8 @@ scan_angle_max = -90
 speed = 1
 
 turn_speed =2
-ex_sp =30
+ex_sp =10
+point_scale = 1
 cur_dir = "forward"
 cur_pos = [50,10]
 cur_dir_int = 0
@@ -119,7 +120,7 @@ def test_step(np_l):
         cur_pos=np
         print(time.time()-st)
     fc.stop()
-        
+        #57
         
 def ct_left():
     global cur_dir_int
@@ -239,6 +240,7 @@ def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
     for ang in range(scan_angle_min,scan_angle_max, scan_step):
         
         cdt = fc.get_distance_at(ang)# get distance
+        cdt = cdt/point_scale # reduce distance because we dont have cm control over car
         xy = [cdt*np.cos(ang),cdt*np.sin(ang)] # convert to grid
         dist_list.append(xy)
     
