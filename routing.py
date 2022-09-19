@@ -16,7 +16,7 @@ cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 big_map=np.zeros([100,100])
 
-end_point = [65,15]
+end_point = [50,15]
 
 test_step1 = []
 for i in range(1,31):
