@@ -10,9 +10,9 @@ scan_angle_max = -90
 
 speed = 1
 
-turn_speed =2
+turn_speed =10
 ex_sp = 2
-point_scale = 4
+point_scale = 3
 cur_dir = "forward"
 cur_pos = [50,10]
 cur_dir_int = 0
@@ -132,7 +132,7 @@ def ct_left():
     global speed
     
     fc.turn_right(turn_speed)
-    time.sleep(1.2)
+    time.sleep(1.1)
     cur_dir_int = (cur_dir_int-1)%4
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
@@ -144,7 +144,7 @@ def ct_right():
     global speed
 
     fc.turn_left(turn_speed)
-    time.sleep(1.2)
+    time.sleep(1.3)
     cur_dir_int = (cur_dir_int+1)%4
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
