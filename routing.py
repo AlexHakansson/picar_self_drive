@@ -227,27 +227,39 @@ def get_distance_at(angle):
     return distance
 '''   
     
-def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
-
+def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5,
+        rt = "xy"):
 
     fc.stop()
-    
+
     scan_angle_max = min([scan_angle_max,90])
     scan_angle_min = max([scan_angle_min,-90])
-    
+
     dist_list = []
-    
+    raw_dist = []
+    cos_list = []
     for ang in range(scan_angle_min,scan_angle_max, scan_step):
-        
-        
-        
+
         cdt = fc.get_distance_at(ang)# get distance
-        cdt = cdt/point_scale # reduce distance because we dont have cm control over car
-        ang = ang*np.pi/180
-        xy = [cdt*np.cos(ang),cdt*np.sin(ang)] # convert to grid
+        raw_dist.append(cdt)
+
+        rad_ang = ang*np.pi/180
+        if cdt > 0:
+            xy = [cdt*np.cos(rad_ang),cdt*np.sin(rad_ang)] # convert to grid
+        else:
+            xy = [1000,1000]
+        cos_val = [np.cos(rad_ang),np.sin(rad_ang)] # convert to grid
+        cos_list.append(cos_val)
         dist_list.append(xy)
+    if rt=="xy":
+        return (dist_list)
+    elif rt =="ang":
+        return cos_list
+    elif rt=="dist":
+       return raw_dist
+
     
-    return (dist_list)
+ for x in range(1,31): test_np.append([routing.cur_pos[0],routing.cur_pos[1]+x])
 
     
 def point_transform(point,dirc):
