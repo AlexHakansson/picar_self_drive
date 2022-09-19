@@ -11,7 +11,7 @@ scan_angle_max = -90
 speed = 10
 ex_sp =15
 cur_dir = "forward"
-cur_pos = [500,10]
+cur_pos = [50,10]
 cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 big_map=np.zeros([100,100])
@@ -54,7 +54,7 @@ def main():
     global big_map
     big_map = rmap
     
-    while len(bt)>0:
+    while len(bt)>0 and cur_pos != end_point:
     
     
         st = time.time()
@@ -396,7 +396,10 @@ if __name__ == "__main__":
         main()
     finally:
         fc.stop()
+        print(cur_pos)
+        print(end_point)
+        
         np.savetxt("big_map.txt",big_map)
         as_map = A_star(cur_pos,end_point,big_map, trace=True)
         np.savetxt("big_mapped.csv",as_map)
-        
+ 
