@@ -34,7 +34,7 @@ def main():
     
     if len(sys.argv) ==3:
         end_point = [sys.argv[1],sys.argv[2]]
-    else: end_point = [65vi,15]
+    else: end_point = [65,15]
     
     rmap = map_space(rmap,cur_pos,cur_dir)
     
