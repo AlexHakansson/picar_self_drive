@@ -162,6 +162,14 @@ def move_back():
     fc.backward(speed)
     time.sleep(step_time*15)
     
+    ct_right()
+    
+    time.delay(1)
+    
+    ct_left()
+    
+    time.delay(1)
+    
     fc.stop()
     
     set_pos(1,(cur_dir_int+2)%4)
