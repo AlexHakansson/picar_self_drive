@@ -40,6 +40,15 @@ def main():
     
     step_count =0
     
+    if debug:
+        np.savetxt("np_world.csv",rmap)
+        tmp_f = open("spots.csv","w")
+        for b in bt:
+            tmp_f.write(",".join(b)+"\n")
+        tmp_f.close()
+        
+    global big_map
+    big_map = rmap
     
     while len(bt)>0:
     
@@ -61,6 +70,7 @@ def main():
                     move_back()
                 
                 rmap = map_space(rmap,cur_pos,cur_dir)
+                big_map = rmap
                 pdict,aend = A_star(cur_pos,end_point,rmap)
                 bt = backtrack(pdict,aend)
                 step_count = 0
@@ -377,3 +387,8 @@ if __name__ == "__main__":
         main()
     finally:
         fc.stop()
+        np.savetxt("big_map.txt",big_map)
+        as_map = A_star(cur_pos,[300,100],big_map, trace=True)
+        as_map[cur_pos[0],cur_pos[1]] =5
+        np.savetxt("big_mapped.csv",as_map)
+        
