@@ -365,7 +365,6 @@ def backtrack(prev_dict,end_n):
     
 def A_star(start, end, rmap, debug=False,trace = False):
     
-    start = list(start)
     cur_node = start + [0,man_dist(start,end)]
     
     if trace: rmap_copy = rmap.copy()
@@ -375,10 +374,6 @@ def A_star(start, end, rmap, debug=False,trace = False):
     prev_dict = {tuple(start):(0,0)}
     
     found = False
-    
-    if rmap[end[0],end[1]]==1:
-        print("end is a block")
-        return(prev_dict,cur_node)
     
     
     while not found and len(open_list)>0:
