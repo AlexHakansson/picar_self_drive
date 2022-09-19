@@ -10,7 +10,7 @@ scan_angle_max = -90
 
 speed = 1
 
-turn_speed =10
+turn_speed =5
 ex_sp = 2
 point_scale =5
 cur_dir = "forward"
