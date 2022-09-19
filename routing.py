@@ -42,7 +42,7 @@ def main():
     
     rmap = map_space(rmap,cur_pos,cur_dir)
     
-    pdict,aend = A_star(cur_pos,end_point,rmap)
+    pdict,aend = A_star(cur_pos,end_point,rmap,debug)
     
     print("end")
     print(aend)
@@ -248,7 +248,7 @@ def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5,
 
         rad_ang = ang*np.pi/180
         if cdt > 0:
-            xy = [cdt*np.cos(rad_ang)/point_scale,cdt*np.sin(rad_ang)/point_scale] # convert to grid
+            xy = [cdt*np.sin(rad_ang)/point_scale,cdt*np.cos(rad_ang)/point_scale] # convert to grid
         else:
             xy = [1000,1000]
         cos_val = [np.cos(rad_ang),np.sin(rad_ang)] # convert to grid
