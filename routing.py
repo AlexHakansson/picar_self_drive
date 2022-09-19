@@ -12,7 +12,7 @@ speed = 1
 
 turn_speed =2
 ex_sp = 2
-point_scale = 2
+point_scale = 4
 cur_dir = "forward"
 cur_pos = [50,10]
 cur_dir_int = 0
