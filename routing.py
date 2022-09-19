@@ -4,7 +4,7 @@ import sys
 import time
 import picar_4wd as fc
 
-us_step = 10
+us_step = 15
 scan_angle_max = 90
 scan_angle_max = -90
 
