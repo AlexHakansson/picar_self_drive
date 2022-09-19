@@ -258,8 +258,6 @@ def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5,
     elif rt=="dist":
        return raw_dist
 
-    
- for x in range(1,31): test_np.append([routing.cur_pos[0],routing.cur_pos[1]+x])
 
     
 def point_transform(point,dirc):
