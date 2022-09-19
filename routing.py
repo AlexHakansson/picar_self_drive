@@ -16,7 +16,7 @@ cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 big_map=np.zeros([100,100])
 
-end_point = [70,20]
+end_point = [65,15]
 
 test_step1 = []
 for i in range(1,31):
@@ -27,6 +27,7 @@ for i in range(1,31):
     test_step2.append([cur_pos[0]+i,cur_pos[1]+31])
 
 def main():
+    global end_point
     global cur_pos
     
     debug = True
@@ -34,7 +35,7 @@ def main():
     
     if len(sys.argv) ==3:
         end_point = [sys.argv[1],sys.argv[2]]
-    else: end_point = [65,15]
+    #else: end_point = [65,15]
     
     rmap = map_space(rmap,cur_pos,cur_dir)
     
