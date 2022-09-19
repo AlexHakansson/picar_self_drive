@@ -374,7 +374,9 @@ def A_star(start, end, rmap, debug=False,trace = False):
     prev_dict = {tuple(start):(0,0)}
     
     found = False
-    
+    if rmap[end_point[0],end_point[1]]==1:
+        print("end is a block")
+        return (prev_dict,cur_node)
     
     while not found and len(open_list)>0:
         
