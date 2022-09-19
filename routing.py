@@ -34,7 +34,7 @@ def main():
     
     if len(sys.argv) ==3:
         end_point = [sys.argv[1],sys.argv[2]]
-    else: end_point = [70,20]
+    else: end_point = [65vi,15]
     
     rmap = map_space(rmap,cur_pos,cur_dir)
     
@@ -54,7 +54,7 @@ def main():
     global big_map
     big_map = rmap
     
-    while len(bt)>0 and cur_pos != end_point:
+    while len(bt)>0 and list(cur_pos) != list(end_point):
     
     
         st = time.time()
