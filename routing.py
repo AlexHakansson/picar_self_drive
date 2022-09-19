@@ -45,7 +45,7 @@ def main():
         np.savetxt("np_world.csv",rmap)
         tmp_f = open("spots.csv","w")
         for b in bt:
-            tmp_f.write(",".join(b)+"\n")
+            tmp_f.write(",".join([str(x) for x in b)]+"\n")
         tmp_f.close()
         
     global big_map
