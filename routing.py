@@ -37,7 +37,7 @@ def main():
     rmap = np.zeros([100,100])
     
     if len(sys.argv) ==3:
-        end_point = [sys.argv[1],sys.argv[2]]
+        end_point = [int(sys.argv[1]),int(sys.argv[2])]
     #else: end_point = [65,15]
     
     rmap = map_space(rmap,cur_pos,cur_dir)
