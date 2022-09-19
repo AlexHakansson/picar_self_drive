@@ -8,7 +8,9 @@ us_step = 5
 scan_angle_max = 90
 scan_angle_max = -90
 
-speed = 5
+speed = 1
+
+turn_speed =5
 ex_sp =15
 cur_dir = "forward"
 cur_pos = [50,10]
@@ -125,7 +127,7 @@ def ct_left():
     global dir_dict
     global speed
     
-    fc.turn_right(speed)
+    fc.turn_right(turn_speed)
     time.sleep(1.1)
     cur_dir_int = (cur_dir_int-1)%4
     cur_dir = dir_dict[cur_dir_int]
@@ -137,7 +139,7 @@ def ct_right():
     global dir_dict
     global speed
 
-    fc.turn_left(speed)
+    fc.turn_left(turn_speed)
     time.sleep(1.1)
     cur_dir_int = (cur_dir_int+1)%4
     cur_dir = dir_dict[cur_dir_int]
