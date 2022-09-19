@@ -390,6 +390,5 @@ if __name__ == "__main__":
         fc.stop()
         np.savetxt("big_map.txt",big_map)
         as_map = A_star(cur_pos,[300,100],big_map, trace=True)
-        as_map[cur_pos[0],cur_pos[1]] =5
         np.savetxt("big_mapped.csv",as_map)
         
