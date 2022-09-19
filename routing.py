@@ -12,12 +12,12 @@ speed = 1
 
 turn_speed =2
 ex_sp = 3
-point_scale = 1
+point_scale = 3
 cur_dir = "forward"
 cur_pos = [50,10]
 cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
-big_map=np.zeros([100,100])
+big_map=np.zeros([200,200])
 
 end_point = [55,15]
 
