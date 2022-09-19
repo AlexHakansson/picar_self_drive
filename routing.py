@@ -13,6 +13,7 @@ cur_dir = "forward"
 cur_pos = [200,20]
 cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
+big_map=np.zeros([500,500])
 
 test_step1 = []
 for i in range(1,31):
