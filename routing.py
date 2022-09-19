@@ -4,7 +4,7 @@ import sys
 import time
 import picar_4wd as fc
 
-us_step = 5
+us_step = 10
 scan_angle_max = 90
 scan_angle_max = -90
 
@@ -37,7 +37,7 @@ def main():
     rmap = np.zeros([100,100])
     
     if len(sys.argv) ==3:
-        end_point = [int(sys.argv[1]),int(sys.argv[2])]
+        end_point = [int(sys.argv[1]),(sys.argv[2])]
     #else: end_point = [65,15]
     
     rmap = map_space(rmap,cur_pos,cur_dir)
@@ -96,6 +96,7 @@ def main():
         print("time")
         print(time.time()-st)
         
+        print("bt_cur_pos")
         print(bt[0])
         print(cur_pos)
         print(cur_dir)
