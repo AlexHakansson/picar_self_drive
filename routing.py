@@ -8,7 +8,7 @@ us_step = 5
 scan_angle_max = 90
 scan_angle_max = -90
 
-speed = 10
+speed = 5
 ex_sp =15
 cur_dir = "forward"
 cur_pos = [50,10]
@@ -126,7 +126,7 @@ def ct_left():
     global speed
     
     fc.turn_right(speed)
-    time.sleep(1)
+    time.sleep(1.1)
     cur_dir_int = (cur_dir_int-1)%4
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
@@ -138,7 +138,7 @@ def ct_right():
     global speed
 
     fc.turn_left(speed)
-    time.sleep(1.2)
+    time.sleep(1.1)
     cur_dir_int = (cur_dir_int+1)%4
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
@@ -406,6 +406,6 @@ if __name__ == "__main__":
         print(end_point)
         
         np.savetxt("big_map.txt",big_map)
-        as_map = A_star(cur_pos,end_point,big_map, trace=True)
-        np.savetxt("big_mapped.csv",as_map)
+        #as_map = A_star(cur_pos,end_point,big_map, trace=True)
+        #np.savetxt("big_mapped.csv",as_map)
  
