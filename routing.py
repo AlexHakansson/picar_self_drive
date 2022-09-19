@@ -88,11 +88,11 @@ def main():
                 if 0 in tmp:
                     move_back()
                 
-                rmap = map_space(rmap,cur_pos,cur_dir)
-                big_map = rmap
-                pdict,aend = A_star(cur_pos,end_point,rmap)
-                bt = backtrack(pdict,aend)
-                step_count = 0
+                    rmap = map_space(rmap,cur_pos,cur_dir)
+                    big_map = rmap
+                    pdict,aend = A_star(cur_pos,end_point,rmap)
+                    bt = backtrack(pdict,aend)
+                    step_count = 0
                 
                 continue
             
