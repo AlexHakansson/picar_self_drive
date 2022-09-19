@@ -45,6 +45,8 @@ def main():
     
     pdict,aend = A_star(cur_pos,end_point,rmap,debug)
     
+    print(pdict)
+    
     print("end")
     print(aend)
     
