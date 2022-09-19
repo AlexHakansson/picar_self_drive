@@ -10,10 +10,12 @@ scan_angle_max = -90
 
 speed = 10
 cur_dir = "forward"
-cur_pos = [200,20]
+cur_pos = [500,10]
 cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
-big_map=np.zeros([500,500])
+big_map=np.zeros([100,100])
+
+end_point = [70,20]
 
 test_step1 = []
 for i in range(1,31):
@@ -27,11 +29,11 @@ def main():
     global cur_pos
     
     debug = True
-    rmap = np.zeros([500,500])
+    rmap = np.zeros([100,100])
     
     if len(sys.argv) ==3:
         end_point = [sys.argv[1],sys.argv[2]]
-    else: end_point = [300,100]
+    else: end_point = [70,20]
     
     rmap = map_space(rmap,cur_pos,cur_dir)
     
@@ -112,7 +114,7 @@ def ct_left():
     global speed
     
     fc.turn_right(speed)
-    time.sleep(1.1)
+    time.sleep(1a)
     cur_dir_int = (cur_dir_int-1)%4
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
@@ -389,6 +391,6 @@ if __name__ == "__main__":
     finally:
         fc.stop()
         np.savetxt("big_map.txt",big_map)
-        as_map = A_star(cur_pos,[300,100],big_map, trace=True)
+        as_map = A_star(cur_pos,end_point,big_map, trace=True)
         np.savetxt("big_mapped.csv",as_map)
         
