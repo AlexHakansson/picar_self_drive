@@ -268,6 +268,7 @@ def point_transform(point,dirc):
 def map_space(rmap, cur_p,dirc="forward",debug=False):
     fc.stop()
     d1 = scan_step_dist()
+    print(d1)
     
     prev = [1000,1000]
     for p in d1:
@@ -426,7 +427,7 @@ if __name__ == "__main__":
         print(end_point)
         
         np.savetxt("big_map.txt",big_map)
-        print(sum(big_map))
+        print(big_map.sum(1))
         #as_map = A_star(cur_pos,end_point,big_map, trace=True)
         #np.savetxt("big_mapped.csv",as_map)
  
