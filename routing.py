@@ -269,7 +269,7 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
     fc.stop()
     d1 = scan_step_dist()
     print(d1)
-    
+    print(cur_dir)
     prev = [1000,1000]
     for p in d1:
         if debug:
@@ -284,7 +284,7 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
             
         # transform point based on current dirction
         else:
-            p = point_transform(p,dirc)
+            p = point_transform(p,cur_dir)
             p = [p[0] + cur_pos[0],p[1]+cur_pos[1]]
             
             #give 10 point boudry
