@@ -11,8 +11,8 @@ scan_angle_max = -90
 speed = 1
 
 turn_speed =2
-ex_sp = 3
-point_scale = 5
+ex_sp = 2
+point_scale = 2
 cur_dir = "forward"
 cur_pos = [50,10]
 cur_dir_int = 0
@@ -245,7 +245,7 @@ def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5,
 
         rad_ang = ang*np.pi/180
         if cdt > 0:
-            xy = [cdt*np.cos(rad_ang),cdt*np.sin(rad_ang)] # convert to grid
+            xy = [cdt*np.cos(rad_ang)/point_scale,cdt*np.sin(rad_ang)/point_scale] # convert to grid
         else:
             xy = [1000,1000]
         cos_val = [np.cos(rad_ang),np.sin(rad_ang)] # convert to grid
@@ -372,7 +372,7 @@ def A_star(start, end, rmap, debug=False,trace = False):
     found = False
     
     if r_map[end[0],end[1]]==1:
-        print("end is a block"]
+        print("end is a block")
         return(prev_dict,cur_node)
     
     
