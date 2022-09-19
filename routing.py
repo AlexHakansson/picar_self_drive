@@ -160,7 +160,7 @@ def move_back():
     step_time = .5/15
     
     fc.backward(speed)
-    time.sleep(step_time*5)
+    time.sleep(step_time*15)
     
     fc.stop()
     
