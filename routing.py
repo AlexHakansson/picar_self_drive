@@ -44,6 +44,9 @@ def main():
     
     pdict,aend = A_star(cur_pos,end_point,rmap)
     
+    print("end")
+    print(aend)
+    
     bt = backtrack(pdict,aend)
     
     step_count =0
@@ -103,7 +106,7 @@ def main():
         bt.pop(0)
         
         # added break check
-        if cur_pos[0]==end_point[0]  and cur_pos[1]==end_point[1]:
+        if cur_pos[0]==end_point[0] and cur_pos[1]==end_point[1]:
             print("we did it!")
             break
             
