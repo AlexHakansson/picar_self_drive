@@ -11,7 +11,7 @@ scan_angle_max = -90
 speed = 1
 
 turn_speed =2
-ex_sp =10
+ex_sp = 3
 point_scale = 1
 cur_dir = "forward"
 cur_pos = [50,10]
@@ -268,11 +268,13 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
     
     prev = [1000,1000]
     for p in d1:
-        #print("p")
-        #print(p)
+        if debug:
+            print("p")
+            print(p)
         #skip if blank space
         if p == [1000,1000]:
-            #print("skipping p")
+            if debug:
+                print("skipping p")
             prev = p
             continue
             
@@ -305,10 +307,18 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
                 stx = int(max(0,min(p[0],prev[0])-ex_sp))
                 enx = int(min(rmap.shape[0],max(p[0],prev[0])+ex_sp))
                 for pi in range(stx,enx):
+                    
                     piy= int(pix*slope+intc)
+                    
+                  
+                    
                     piymax = int(min(piy+ex_sp,rmap.shape[1]))
                     piminy = int(max(piy-ex_sp,0))
                     rmap[pi,piminy:pimaxy]=1
+                    
+                      if debug:
+                        print("line points")
+                        print([pix,piymin,piymax])
                 
                 prev = p
     return rmap
@@ -413,6 +423,7 @@ if __name__ == "__main__":
         print(end_point)
         
         np.savetxt("big_map.txt",big_map)
+        print(sum(big_map))
         #as_map = A_star(cur_pos,end_point,big_map, trace=True)
         #np.savetxt("big_mapped.csv",as_map)
  
