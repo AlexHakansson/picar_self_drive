@@ -9,6 +9,7 @@ scan_angle_max = 90
 scan_angle_max = -90
 
 speed = 10
+ex_sp =15
 cur_dir = "forward"
 cur_pos = [500,10]
 cur_dir_int = 0
@@ -58,10 +59,15 @@ def main():
     
         st = time.time()
         scan_list = fc.scan_step(20)
-        if not scan_list:
-            tmp = [2 for x in range(4)]
-        else:
-            tmp = scan_list[3:7]
+        scansteps = 0
+        print("scan_step")
+        while not scan_list:
+            scan_list = fc.scan_step(20)
+            scansteps = scansteps +1
+        
+        print(scansteps)
+        
+        tmp = scan_list[3:7]
         print(tmp)
         
         # re calculate map if within 10cm or 20cm and haven't looked in 20 steps
@@ -114,7 +120,7 @@ def ct_left():
     global speed
     
     fc.turn_right(speed)
-    time.sleep(1a)
+    time.sleep(1)
     cur_dir_int = (cur_dir_int-1)%4
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
@@ -264,10 +270,10 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
             
             #give 10 point boudry
             
-            minx = max(0,int(p[0]-10))
-            maxx = min(rmap.shape[0]-1,int(p[0]+10))
-            miny= max(0,int(p[1]-10))
-            maxy = min(rmap.shape[1]-1,int(p[1]+10))
+            minx = max(0,int(p[0]-ex_sp))
+            maxx = min(rmap.shape[0]-1,int(p[0]+ex_sp))
+            miny= max(0,int(p[1]-ex_sp))
+            maxy = min(rmap.shape[1]-1,int(p[1]+ex_sp))
             
             rmap[minx:maxx,miny:maxy] = 1
             
@@ -282,13 +288,13 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
                 intc = p[1]-(slope*p[0])
 
 
-                # make line between point and add 10
-                stx = int(max(0,min(p[0],prev[0])-10))
-                enx = int(min(rmap.shape[0],max(p[0],prev[0])+10))
+                # make line between point and add ex_sp
+                stx = int(max(0,min(p[0],prev[0])-ex_sp))
+                enx = int(min(rmap.shape[0],max(p[0],prev[0])+ex_sp))
                 for pi in range(stx,enx):
                     piy= int(pix*slope+intc)
-                    piymax = int(min(piy+10,rmap.shape[1]))
-                    piminy = int(max(piy-10,0))
+                    piymax = int(min(piy+ex_sp,rmap.shape[1]))
+                    piminy = int(max(piy-ex_sp,0))
                     rmap[pi,piminy:pimaxy]=1
                 
                 prev = p
