@@ -245,7 +245,7 @@ def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5):
     return (dist_list)
 
     
-def point_transform(point,dirc,cur_p):
+def point_transform(point,dirc):
 
     if dirc=="forward":
         return(point)
@@ -277,7 +277,7 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
         # transform point based on current dirction
         else:
             p = point_transform(p,dirc)
-            p = [p[0] + cur_p[0],p[1]+cur_p[1]]
+            p = [p[0] + cur_pos[0],p[1]+cur_pos[1]]
             
             #give 10 point boudry
             
