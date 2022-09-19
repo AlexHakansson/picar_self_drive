@@ -58,7 +58,7 @@ def main():
     global big_map
     big_map = rmap
     
-    while len(bt)>0 and (list(cur_pos) != list(end_point)):
+    while len(bt)>0:
     
     
         st = time.time()
