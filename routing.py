@@ -84,25 +84,25 @@ def main():
                 pdict,aend = A_star(cur_pos,end_point,rmap)
                 bt = backtrack(pdict,aend)
                 step_count = 0
+                
+                continue
+            
+        print("time")
+        print(time.time()-st)
         
-        else:
-            
-            print("time")
-            print(time.time()-st)
-            
-            print(bt[0])
-            print(cur_pos)
-            print(cur_dir)
-            
-            step_count = step_count+1
-            move_step(bt[0], debug)
-            cur_pos=bt[0]
-            bt.pop(0)
-            
-            # added break check
-            if cur_pos[0]==end_point[0]  and cur_pos[1]==end_point[1]:
-                print("we did it!")
-                break
+        print(bt[0])
+        print(cur_pos)
+        print(cur_dir)
+        
+        step_count = step_count+1
+        move_step(bt[0], debug)
+        cur_pos=bt[0]
+        bt.pop(0)
+        
+        # added break check
+        if cur_pos[0]==end_point[0]  and cur_pos[1]==end_point[1]:
+            print("we did it!")
+            break
             
 def test_step(np_l):
     sc =0
