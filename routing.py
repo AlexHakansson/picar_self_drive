@@ -16,7 +16,7 @@ cur_dir_int = 0
 dir_dict = {0:"forward",1:"right",2:"back",3:"left"}
 big_map=np.zeros([100,100])
 
-end_point = [50,15]
+end_point = [55,15]
 
 test_step1 = []
 for i in range(1,31):
@@ -55,7 +55,7 @@ def main():
     global big_map
     big_map = rmap
     
-    while len(bt)>0 and list(cur_pos) != list(end_point):
+    while len(bt)>0 and (list(cur_pos) != list(end_point):
     
     
         st = time.time()
@@ -99,6 +99,11 @@ def main():
             cur_pos=bt[0]
             bt.pop(0)
             
+            # added break check
+            if cur_pos[0]==end_point[0]  and cur_pos[1]==end_point[1]:
+                print("we did it!")
+                break
+            
 def test_step(np_l):
     sc =0
     global cur_pos
@@ -133,7 +138,7 @@ def ct_right():
     global speed
 
     fc.turn_left(speed)
-    time.sleep(1.1)
+    time.sleep(1.2)
     cur_dir_int = (cur_dir_int+1)%4
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
