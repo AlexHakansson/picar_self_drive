@@ -10,8 +10,8 @@ scan_angle_max = -90
 
 speed = 1
 
-turn_speed =5
-ex_sp =15
+turn_speed =2
+ex_sp =30
 cur_dir = "forward"
 cur_pos = [50,10]
 cur_dir_int = 0
@@ -266,8 +266,11 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
     
     prev = [1000,1000]
     for p in d1:
+        #print("p")
+        #print(p)
         #skip if blank space
-        if p != [1000,1000]:
+        if p == [1000,1000]:
+            #print("skipping p")
             prev = p
             continue
             
