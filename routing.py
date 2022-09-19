@@ -164,11 +164,11 @@ def move_back():
     
     ct_right()
     
-    time.delay(1)
+    time.sleep(1)
     
     ct_left()
     
-    time.delay(1)
+    time.sleep(1)
     
     fc.stop()
     
