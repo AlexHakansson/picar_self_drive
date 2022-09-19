@@ -262,7 +262,7 @@ def point_transform(point,dirc):
         return new_point
     elif dirc=="left":
         new_point = [-point[1],point[0]]
-        return new_point
+    return new_point
     
     
 def map_space(rmap, cur_p,dirc="forward",debug=False):
