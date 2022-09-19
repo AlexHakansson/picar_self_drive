@@ -316,7 +316,7 @@ def map_space(rmap, cur_p,dirc="forward",debug=False):
                     piminy = int(max(piy-ex_sp,0))
                     rmap[pi,piminy:pimaxy]=1
                     
-                      if debug:
+                    if debug:
                         print("line points")
                         print([pix,piymin,piymax])
                 
