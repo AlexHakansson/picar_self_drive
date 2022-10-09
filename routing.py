@@ -160,19 +160,19 @@ def move_back():
     step_time = .5/15
     
     fc.backward(speed)
-    time.sleep(step_time*15)
+    #time.sleep(step_time*15)
     
-    ct_right()
+    #ct_right()
     
-    time.sleep(1)
+    #time.sleep(1)
     
-    ct_left()
+    #ct_left()
     
-    time.sleep(1)
+    #time.sleep(1)
     
-    fc.stop()
+    #fc.stop()
     
-    set_pos(1,(cur_dir_int+2)%4)
+    #set_pos(1,(cur_dir_int+2)%4)
 
 def set_pos(ns,nd):
 
