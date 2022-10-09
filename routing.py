@@ -3,6 +3,11 @@ import numpy as np
 import sys
 import time
 import picar_4wd as fc
+from gpiozero import CPUTemperature
+
+def get_temp(): 
+    cpu = CPUTemperature()
+    return(cpu.temperature)
 
 us_step = 15
 scan_angle_max = 90
