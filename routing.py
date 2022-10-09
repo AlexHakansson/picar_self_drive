@@ -10,7 +10,7 @@ import psutil
  
 # Getting loadover15 minutes
 def get_cpu_percent():
-    cpu = psutil.cpu_percent()
+    cpu = psutil.getloadavg()[0]*100
     return(cpu)
 
 
