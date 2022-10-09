@@ -11,6 +11,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     #try:
     #client, clientInfo = s.accept()
     while 1:
+        print("top")
         client, clientInfo = s.accept()
         print("server recv from: ", clientInfo)
         data = client.recv(1024)      # receive 1024 Bytes of message in binary format
@@ -59,7 +60,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     routing.forward()
                     #client.sendall(bytes("forward")
                     dst = routing.get_distance(0)
-                    client.sendall(str(dst))
+                    client.sendall(bytes,(str(dst)),"utf-8")
                 except:
                     print("getting")
                     client.sendall(bytes(str(routing.speed),"utf-8"))
