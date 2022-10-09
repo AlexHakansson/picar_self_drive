@@ -37,6 +37,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     #client.sendall("back")
                     dst = routing.get_distance(0)
                     client.sendall(str(dst))
+                if data == "Stop":
+                    routing.fc.stop()
                 if "speed" in data:
                     try:
                         ns =  data.strip("speed ")
