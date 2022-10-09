@@ -43,7 +43,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 client.sendall(bytes(str(dst),"utf-8"))
                
             if "forward" in data or data=="87":
-                routing.move_back()
+                routing.forward()
                 #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
                 print("forward")
