@@ -67,7 +67,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     client.sendall(bytes,(str(dst)),"utf-8")
                 except:
                     print("getting speed")
-                    speed = routing.speed
+                    sp = routing.speed
                     client.sendall(bytes(str(sp),"utf-8"))
                     
             if "temp" in data:
