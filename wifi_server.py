@@ -25,12 +25,15 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 dst = routing.get_distance(0)
                 print("right")
                 client.sendall(bytes(str(dst),"utf-8"))
+                routing.fc.stop()
+                
             if data == "left"or data =="65":
                 routing.ct_left()
                 #client.sendall(bytes("left")
                 dst = routing.get_distance(0)
                 print("left")
                 client.sendall(bytes(str(dst),"utf-8"))
+                routing.fc.stop()
                 
             if data == "back"or data=="83":
                 routing.move_back()
@@ -48,7 +51,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             if data == "Stop":
                 print("stopping")
                 routing.fc.stop()
-                client.sendall(bytes(str(routing.speed),"utf-8"))
+                dst = dst = routing.get_distance(0)
+                client.sendall(bytes(str(dst),"utf-8"))
                 
             if "speed" in data:
                 try:
@@ -63,7 +67,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     client.sendall(bytes,(str(dst)),"utf-8")
                 except:
                     print("getting")
-                    client.sendall(bytes(str(routing.speed),"utf-8"))
+                    speed = routing.speed()
+                    client.sendall(bytes(str(sp),"utf-8"))
                     
                 
                 
