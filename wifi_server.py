@@ -19,7 +19,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print(data)
             data = data.decode("utf-8")
             
-            if data == "right"or data == "68":
+            if "right" in data or data == "68":
                 routing.ct_right()
                 #client.sendall(bytes("right")
                 dst = routing.get_distance(0)
@@ -27,7 +27,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 client.sendall(bytes(str(dst),"utf-8"))
                 routing.fc.stop()
                 
-            if data == "left"or data =="65":
+            if "left" in data or data =="65":
                 routing.ct_left()
                 #client.sendall(bytes("left")
                 dst = routing.get_distance(0)
@@ -35,14 +35,14 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 client.sendall(bytes(str(dst),"utf-8"))
                 routing.fc.stop()
                 
-            if data == "back"or data=="83":
+            if "back" in data or data=="83":
                 routing.move_back()
                 #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
                 print("back")
                 client.sendall(bytes(str(dst),"utf-8"))
                
-            if data == "forward"or data=="87":
+            if "forward" in data or data=="87":
                 routing.move_back()
                 #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
@@ -66,9 +66,19 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     dst = routing.get_distance(0)
                     client.sendall(bytes,(str(dst)),"utf-8")
                 except:
-                    print("getting")
-                    speed = routing.speed()
+                    print("getting speed")
+                    speed = routing.speed
                     client.sendall(bytes(str(sp),"utf-8"))
+                    
+            if "temp" in data:
+                print("getting temperature")
+                tp = routing.get_temp()
+                client.sendall(bytes(str(tp),"utf-8"))
+                
+            if "cpu" in data:
+                print("getting temperature")
+                cpu = routing.get_cpu_percent()
+                client.sendall(bytes(str(cpu),"utf-8"))
                     
                 
                 
