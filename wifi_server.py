@@ -15,11 +15,13 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = client.recv(1024)      # receive 1024 Bytes of message in binary format
             if data != b"":
                 print(data)
+                data = data.decode("utf-8")
                 
                 if data == "right"| data == "68":
                     routing.ct_right()
                     #client.sendall("right")
                     dst = routing.get_distance(0)
+                    print("right")
                     client.sendall(str(dst))
                 if data == "left"| data =="65":
                     routing.ct_left()
