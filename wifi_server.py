@@ -42,6 +42,8 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 client.sendall(bytes(str(dst),"utf-8"))
             if data == "Stop":
                 routing.fc.stop()
+                client.sendall(bytes(str(routing.speed),"utf-8"))
+                
             if "speed" in data:
                 try:
                     ns =  data.strip("speed ")
