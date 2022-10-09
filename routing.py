@@ -168,6 +168,7 @@ def ct_right():
     fc.forward(speed)
     
 def forward():
+    global speed
     fc.forward(speed)
  
 def move_back():
