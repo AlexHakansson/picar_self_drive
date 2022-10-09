@@ -237,7 +237,7 @@ def move_step(np,debug=False):
         
  
 def get_distance(angle):
-    cdt = fc.get_distance_at(ang)# get distance
+    cdt = fc.get_distance_at(angle)# get distance
     return cdt
 
     
