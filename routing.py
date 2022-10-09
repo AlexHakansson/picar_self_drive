@@ -153,6 +153,9 @@ def ct_right():
     cur_dir = dir_dict[cur_dir_int]
     fc.forward(speed)
     
+def forward():
+    fc.forward(speed)
+ 
 def move_back():
     global cur_dir_int
     global speed
