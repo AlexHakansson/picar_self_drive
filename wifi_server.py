@@ -51,17 +51,17 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             if data == "Stop":
                 print("stopping")
                 routing.fc.stop()
-                dst = dst = routing.get_distance(0)
+                dst = routing.get_distance(0)
                 client.sendall(bytes(str(dst),"utf-8"))
                 
             if "speed" in data:
                 try:
-         
-                    ns =  data.strip("speed ")
-                    ns = int(ns)
-                    print("change speed")
-                    routing.speed = ns
-                    routing.forward()
+                    if "set" in data:
+                        ns =  data.strip("set speed ")
+                        ns = int(ns)
+                        print("change speed")
+                        routing.speed = ns
+                        #routing.forward()
                     #client.sendall(bytes("forward")
                     dst = routing.get_distance(0)
                     client.sendall(bytes,(str(dst)),"utf-8")
