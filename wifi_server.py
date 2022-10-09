@@ -17,24 +17,24 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print(data)
             data = data.decode("utf-8")
             
-            if data == "right"| data == "68":
+            if data == "right"or data == "68":
                 routing.ct_right()
                 #client.sendall("right")
                 dst = routing.get_distance(0)
                 print("right")
                 client.sendall(str(dst))
-            if data == "left"| data =="65":
+            if data == "left"or data =="65":
                 routing.ct_left()
                 #client.sendall("left")
                 dst = routing.get_distance(0)
                 client.sendall(str(dst))
                 
-            if data == "back"| data=="83":
+            if data == "back"or data=="83":
                 routing.move_back()
                 #client.sendall("back")
                 dst = routing.get_distance(0)
                 client.sendall("dist " + str(dst))
-            if data == "forward"| data=="87":
+            if data == "forward"or data=="87":
                 routing.move_back()
                 #client.sendall("back")
                 dst = routing.get_distance(0)
