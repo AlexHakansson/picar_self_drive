@@ -243,6 +243,8 @@ def move_step(np,debug=False):
  
 def get_distance(angle):
     cdt = fc.get_distance_at(angle)# get distance
+    if cdt == -2:
+        cdt=1000
     return cdt
 
     
