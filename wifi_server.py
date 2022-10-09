@@ -9,9 +9,9 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
     s.listen()
 
     #try:
-    client, clientInfo = s.accept()
+    #client, clientInfo = s.accept()
     while 1:
-        #client, clientInfo = s.accept()
+        client, clientInfo = s.accept()
         print("server recv from: ", clientInfo)
         data = client.recv(1024)      # receive 1024 Bytes of message in binary format
         if data != b"":
@@ -28,32 +28,40 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 routing.ct_left()
                 #client.sendall(bytes("left")
                 dst = routing.get_distance(0)
+                print("left")
                 client.sendall(bytes(str(dst),"utf-8"))
                 
             if data == "back"or data=="83":
                 routing.move_back()
                 #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
+                print("back")
                 client.sendall(bytes(str(dst),"utf-8"))
+               
             if data == "forward"or data=="87":
                 routing.move_back()
                 #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
+                print("forward")
                 client.sendall(bytes(str(dst),"utf-8"))
             if data == "Stop":
+                print("stopping)
                 routing.fc.stop()
                 client.sendall(bytes(str(routing.speed),"utf-8"))
                 
             if "speed" in data:
                 try:
+         
                     ns =  data.strip("speed ")
                     ns = int(ns)
+                    print("change speed")
                     routing.speed = ns
                     routing.forward()
                     #client.sendall(bytes("forward")
                     dst = routing.get_distance(0)
                     client.sendall(str(dst))
                 except:
+                    print("getting")
                     client.sendall(bytes(str(routing.speed),"utf-8"))
                     
                 
