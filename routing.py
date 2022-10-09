@@ -5,6 +5,15 @@ import time
 import picar_4wd as fc
 from gpiozero import CPUTemperature
 
+import os
+import psutil
+ 
+# Getting loadover15 minutes
+def get_cpu_percent():
+    cpu = psutil.cpu_percent()
+    return(cpu)
+
+
 def get_temp(): 
     cpu = CPUTemperature()
     return(cpu.temperature)
