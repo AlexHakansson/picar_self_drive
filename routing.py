@@ -232,15 +232,11 @@ def move_step(np,debug=False):
         fc.backward(speed)        
         
         
-'''       
-def get_distance_at(angle):
-    global angle_distance
-    fc.servo.set_angle(angle)
-    time.sleep(0.04)
-    distance = us.get_distance()
-    angle_distance = [angle, distance]
-    return distance
-'''   
+ 
+def get_distance(angle):
+    cdt = fc.get_distance_at(ang)# get distance
+    return cdt
+
     
 def scan_step_dist(scan_angle_max = 90,scan_angle_min = -90,scan_step =5,
         rt = "xy"):
@@ -445,32 +441,7 @@ def A_star(start, end, rmap, debug=False,trace = False):
     
    
 
-def get_distance(angle):
-    self.ser.set_angle(angle)
-    time.sleep(0.5)
-    return self.us.get_distance()
 
-def scan_and_build_map(angle, map_to_fill):
-    last_position = [0,0]
-    map_to_fill[0,0] = 7
-    map_to_fill[int(len(map_to_fill)*.5), 0] = 5
-    for current_angle in range(-1*angle, angle, self.angle_increment):
-        current_distance = get_distance(current_angle)
-        print(current_distance)
-        if current_angle == -1*angle:
-            last_position = [(len(map_to_fill)*.5 - current_distance*math.sin(math.radians(current_angle)))/self.length_per_position, current_distance*math.cos(math.radians(current_angle))/self.length_per_position]
-            if (last_position[0] < len(map_to_fill) and last_position[1] <= len(map_to_fill)):
-                map_to_fill[int(last_position[0]), int(last_position[1])] = 1
-        else:
-            current_position = [len(map_to_fill)*.5 - current_distance*math.sin(math.radians(current_angle))/self.length_per_position, current_distance*math.cos(math.radians(current_angle))/self.length_per_position]
-            if (current_position[0] < len(map_to_fill) and current_position[1] <= len(map_to_fill)):
-                map_to_fill[int(current_position[0]), int(current_position[1])] = 1
-                slope = (current_position[1] - last_position[0])/(current_position[0] - last_position[0])
-                for i in range(0, int(current_position[0] - last_position[0])):
-                    if (last_position[0] + i < len(map_to_fill) and last_position[1] + i*slope < len(map_to_fill)):
-                        map_to_fill[int(last_position[0] + i), int(last_position[1] + i*slope)] = 1
-    map_to_fill[int(len(map_to_fill)*.5), 0] = 5
-    return map_to_fill
         
         
 if __name__ == "__main__":
