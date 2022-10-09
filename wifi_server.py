@@ -19,26 +19,26 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             
             if data == "right"or data == "68":
                 routing.ct_right()
-                #client.sendall("right")
+                #client.sendall(bytes("right")
                 dst = routing.get_distance(0)
                 print("right")
-                client.sendall(str(dst))
+                client.sendall(bytes(str(dst),"utf-8"))
             if data == "left"or data =="65":
                 routing.ct_left()
-                #client.sendall("left")
+                #client.sendall(bytes("left")
                 dst = routing.get_distance(0)
-                client.sendall(str(dst))
+                client.sendall(bytes(str(dst),"utf-8"))
                 
             if data == "back"or data=="83":
                 routing.move_back()
-                #client.sendall("back")
+                #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
-                client.sendall("dist " + str(dst))
+                client.sendall(bytes(str(dst),"utf-8"))
             if data == "forward"or data=="87":
                 routing.move_back()
-                #client.sendall("back")
+                #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
-                client.sendall(str(dst))
+                client.sendall(bytes(str(dst),"utf-8"))
             if data == "Stop":
                 routing.fc.stop()
             if "speed" in data:
@@ -47,11 +47,11 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     ns = int(ns)
                     routing.speed = ns
                     routing.forward()
-                    #client.sendall("forward")
+                    #client.sendall(bytes("forward")
                     dst = routing.get_distance(0)
                     client.sendall(str(dst))
                 except:
-                    client.sendall("Sorry no interger for speed found")
+                    client.sendall(bytes(str(routing.speed),"utf-8"))
                     
                 
                 
