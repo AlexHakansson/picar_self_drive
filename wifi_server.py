@@ -19,7 +19,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             print(data)
             data = data.decode("utf-8")
             
-            if "right" in data or data == "68":
+            if "right" in data:
                 routing.ct_right()
                 #client.sendall(bytes("right")
                 dst = routing.get_distance(0)
@@ -27,7 +27,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 client.sendall(bytes(str(dst),"utf-8"))
                 routing.fc.stop()
                 
-            if "left" in data or data =="65":
+            if "left" in data:
                 routing.ct_left()
                 #client.sendall(bytes("left")
                 dst = routing.get_distance(0)
@@ -35,20 +35,20 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                 client.sendall(bytes(str(dst),"utf-8"))
                 routing.fc.stop()
                 
-            if "back" in data or data=="83":
+            if "back" in data:
                 routing.move_back()
                 #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
                 print("back")
                 client.sendall(bytes(str(dst),"utf-8"))
                
-            if "forward" in data or data=="87":
+            if "forward" in data:
                 routing.forward()
                 #client.sendall(bytes("back")
                 dst = routing.get_distance(0)
                 print("forward")
                 client.sendall(bytes(str(dst),"utf-8"))
-            if data == "Stop":
+            if data == "stop":
                 print("stopping")
                 routing.fc.stop()
                 dst = routing.get_distance(0)
