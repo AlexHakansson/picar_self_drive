@@ -55,7 +55,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
                     
                 
                 
-    except: 
-        print("Closing socket")
-        client.close()
-        s.close()    
+    #except: 
+        #print("Closing socket")
+        #client.close()
+        #s.close()    
